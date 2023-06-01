@@ -118,7 +118,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(ID).removeValue();
+                                firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(ID).removeValue();
 
                                 AlertDialog.Builder food = new AlertDialog.Builder(Update_Delete_Dish.this);
                                 food.setMessage("Your Dish has been Deleted");
@@ -149,7 +149,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
 
                 String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 progressDialog = new ProgressDialog(Update_Delete_Dish.this);
-                databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(useridd).child(ID);
+                databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(useridd).child(ID);
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -268,7 +268,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
     private void updatedesc(String uri) {
         ChefId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, uri, ID, ChefId);
-        firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City)
+        firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District)
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(ID)
                 .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

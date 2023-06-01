@@ -70,7 +70,7 @@ public class OrderDish extends AppCompatActivity {
                 RandomId = getIntent().getStringExtra("FoodMenu");
                 ChefID = getIntent().getStringExtra("ChefId");
 
-                databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(ChefID).child(RandomId);
+                databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(ChefID).child(RandomId);
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public synchronized void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -148,7 +148,7 @@ public class OrderDish extends AppCompatActivity {
                                     }
 
                                     if (ChefID.equals(cart1.getChefId())) {
-                                        data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(ChefID).child(RandomId);
+                                        data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(ChefID).child(RandomId);
                                         data.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -210,7 +210,7 @@ public class OrderDish extends AppCompatActivity {
                                         alert.show();
                                     }
                                 } else {
-                                data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(ChefID).child(RandomId);
+                                data = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(ChefID).child(RandomId);
                                 data.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

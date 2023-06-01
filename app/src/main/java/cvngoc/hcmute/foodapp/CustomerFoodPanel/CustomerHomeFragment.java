@@ -96,9 +96,9 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     private void customermenu() {
 
         swipeRefreshLayout.setRefreshing(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District);
+        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District);
         if(databaseReference != null){
-            databaseReference.child(City).addValueEventListener(new ValueEventListener() {
+            databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     updateDishModelList.clear();

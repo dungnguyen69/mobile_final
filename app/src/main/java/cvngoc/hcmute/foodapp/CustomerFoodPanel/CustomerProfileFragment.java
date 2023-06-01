@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import cvngoc.hcmute.foodapp.ChefFoodPanel.Chef_PostDish;
 import cvngoc.hcmute.foodapp.Customer;
 import cvngoc.hcmute.foodapp.MainMenu;
 import cvngoc.hcmute.foodapp.R;
@@ -37,24 +38,9 @@ import java.util.HashMap;
 
 public class CustomerProfileFragment extends Fragment {
 
-
-    String[] Maharashtra = {"Mumbai", "Pune", "Aurangabad"};
-    String[] Gujarat = {"Ahemdabad", "Rajkot", "Surat"};
-
     String[] HoChiMinh = {"District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8",
             "District 9", "District 10", "District 11", "District 12", "Thu Duc", "Binh Thanh", "Go Vap", "Tan Binh", "Tan Phu", "Phu Nhuan", "Binh Tan"};
-
-    String[] Mumbai = {"Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Mahalakshmi", "Lower Parel", "Prabhadevi",
-            "Dadar", "Matunga", "Mahim", "Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri", "Jogeshwari", "Ram Mandir",
-            "Goregaon", "Malad", "Kandivai", "Borivali", "Dahisar", "MiraRoad", "Bhayander", "Naigaon", "Vasai Road", "Nalla Sopara", "Virar"};
-
-
     String[] Citys = {"Ho Chi Minh"};
-    String[] Aurangabad = {"Aarif Colony", "Baiji Pura", "Balaji Nagar", "Angoori Bagh"};
-    String[] Ahemdabad = {"Mani Nagar", "Thaltej", "Prahlad Nagar", "Gandhinagar"};
-    String[] Surat = {"Agnovad", "Akoti", "Amroli", "Athwalines"};
-    String[] Rajkot = {"Kalawad Road", "Astron chowk", "Kotecha chowk", "Trikon bag"};
-
     EditText firstname, lastname, address;
     Spinner District, City;
     TextView mobileno, Email;
@@ -153,17 +139,13 @@ public class CustomerProfileFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Customer customer = dataSnapshot.getValue(Customer.class);
-
-
                         confirmpass = customer.getConfirmPassword();
                         email = customer.getEmailID();
                         passwordd = customer.getPassword();
                         long mobilenoo = Long.parseLong(customer.getMobileno());
-
                         String Fname = firstname.getText().toString().trim();
                         String Lname = lastname.getText().toString().trim();
                         String Address = address.getText().toString().trim();
-
                         HashMap<String, String> hashMappp = new HashMap<>();
                         hashMappp.put("City", city);
                         hashMappp.put("ConfirmPassword", confirmpass);
@@ -175,6 +157,7 @@ public class CustomerProfileFragment extends Fragment {
                         hashMappp.put("LocalAddress", Address);
                         hashMappp.put("District", district);
                         firebaseDatabase.getInstance().getReference("Customer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(hashMappp);
+                        Toast.makeText(getContext(), "Updated  successfully", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -215,13 +198,10 @@ public class CustomerProfileFragment extends Fragment {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(getActivity(), MainMenu.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-
-
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {

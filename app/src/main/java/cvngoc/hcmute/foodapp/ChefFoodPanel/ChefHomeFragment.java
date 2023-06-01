@@ -74,7 +74,7 @@ public class ChefHomeFragment extends Fragment {
     private void chefDishes() {
 
         String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(useridd);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(useridd);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

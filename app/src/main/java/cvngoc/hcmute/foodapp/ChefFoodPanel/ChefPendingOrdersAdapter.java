@@ -169,7 +169,7 @@ public class ChefPendingOrdersAdapter extends RecyclerView.Adapter<ChefPendingOr
                                                                                                         String usertoken = dataSnapshot.getValue(String.class);
                                                                                                         sendNotifications(usertoken, "Order Accepted", "Your Order has been Accepted by the Chef, Now make Payment for Order", "Payment");
                                                                                                         ReusableCodeForAll.ShowAlert(context,"","Wait for the Customer to make Payment");
-
+                                                                                                        Toast.makeText(context, "Accepted successfully", Toast.LENGTH_SHORT).show();
                                                                                                     }
 
                                                                                                     @Override
@@ -261,6 +261,7 @@ public class ChefPendingOrdersAdapter extends RecyclerView.Adapter<ChefPendingOr
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
                                                                 FirebaseDatabase.getInstance().getReference("AlreadyOrdered").child(userid).child("isOrdered").setValue("false");
+                                                                Toast.makeText(context, "Rejected successfully", Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
 

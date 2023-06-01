@@ -175,7 +175,7 @@ public class Chef_PostDish extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, String.valueOf(uri), RandomUId, ChefId);
-                            firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(District).child(City).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId)
+                            firebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(City).child(District).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId)
                                     .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

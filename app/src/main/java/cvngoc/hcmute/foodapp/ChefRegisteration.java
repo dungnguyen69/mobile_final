@@ -32,22 +32,9 @@ public class ChefRegisteration extends AppCompatActivity {
     String[] HoChiMinh = {"District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8",
             "District 9", "District 10", "District 11", "District 12","Thu Duc", "Binh Thanh", "Go Vap", "Tan Binh", "Tan Phu", "Phu Nhuan", "Binh Tan"};
 
-    String[] Maharashtra = {"Mumbai", "Pune", "Aurangabad"};
-    String[] Gujarat = {"Ahemdabad", "Rajkot", "Surat"};
-
-
-    String[] Mumbai = {"Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Mahalakshmi", "Lower Parel", "Prabhadevi",
-            "Dadar", "Matunga", "Mahim", "Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri", "Jogeshwari", "Ram Mandir",
-            "Goregaon", "Malad", "Kandivai", "Borivali", "Dahisar", "MiraRoad", "Bhayander", "Naigaon", "Vasai Road", "Nalla Sopara", "Virar"};
-
-
-    String[] Pune = {"Hinjewadi", "Wagholi", " Ambegaon", "Undri", "Katraj"};
-    String[] Aurangabad = {"Aarif Colony", "Baiji Pura", "Balaji Nagar", "Angoori Bagh"};
-
-    TextInputLayout Fname, Lname, Email, Pass, cfpass, mobileno, houseno, area, postcode;
+    TextInputLayout Fname, Lname, Email, Pass, cfpass, mobileno, houseno;
     Spinner citySpin, districtSpin;
     Button signup, Emaill, Phone;
-    CountryCodePicker Cpp;
     FirebaseAuth FAuth;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
@@ -58,13 +45,10 @@ public class ChefRegisteration extends AppCompatActivity {
     String confirmpassword;
     String mobile;
     String house;
-    String Area;
-    String Postcode;
     String role = "Chef";
     String statee;
     String cityy;
     String District;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,51 +86,11 @@ public class ChefRegisteration extends AppCompatActivity {
                     districtSpin.setAdapter(arrayAdapter);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-
-//        Cityspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                Object value = parent.getItemAtPosition(position);
-//                cityy = value.toString().trim();
-//                if (cityy.equals("Mumbai")) {
-//                    ArrayList<String> listt = new ArrayList<>();
-//                    for (String text : Mumbai) {
-//                        listt.add(text);
-//                    }
-//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegisteration.this, android.R.layout.simple_spinner_item, listt);
-//                    Suburban.setAdapter(arrayAdapter);
-//                }
-//
-//                if (cityy.equals("Pune")) {
-//                    ArrayList<String> listt = new ArrayList<>();
-//                    for (String text : Pune) {
-//                        listt.add(text);
-//                    }
-//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegisteration.this, android.R.layout.simple_spinner_item, listt);
-//                    Suburban.setAdapter(arrayAdapter);
-//                }
-//
-//                if (cityy.equals("Aurangabad")) {
-//                    ArrayList<String> listt = new ArrayList<>();
-//                    for (String text : Aurangabad) {
-//                        listt.add(text);
-//                    }
-//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegisteration.this, android.R.layout.simple_spinner_item, listt);
-//                    Suburban.setAdapter(arrayAdapter);
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
 
         districtSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
