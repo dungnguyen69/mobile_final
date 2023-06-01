@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cvngoc.hcmute.foodapp">
+
+    <uses-permission android:name="com.google.android.gms.permission.APPLICATION_ID"
+        android:value="ca-app-pub-3125529504451842~8524211790"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application xmlns:tools="http://schemas.android.com/tools"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+
+        <activity
+            android:name="cvngoc.hcmute.foodapp.DeliveryFoodPanel.Delivery_ShippingOrder"
+            android:label="Ship Orders"></activity>
+        <activity
+            android:name="cvngoc.hcmute.foodapp.DeliveryFoodPanel.DeliveryShipOrderView"
+            android:label="Ship Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.DeliveryFoodPanel.DeliveryPendingOrderView"
+            android:label="Pending Orders" />
+        <activity android:name="cvngoc.hcmute.foodapp.Delivery_FoodPanelBottomNavigation" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_SendOtp"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_ForgotPassword"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_Login"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_LoginPhone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_VerifyPhone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Delivery_registeration"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.ChefPreparedOrderView"
+            android:label="Prepared Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.ChefPreparedOrder"
+            android:label="Prepared Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.ChefOrdertobePrepareView"
+            android:label="Orders to be Prepared" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.ChefOrderTobePrepared"
+            android:label="Orders to be Prepared" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerPaymentOTP"
+            android:label="Online Payment" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerOnlinePayment"
+            android:label="Online Payment" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerPayment"
+            android:label="Payable Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.PayableOrders"
+            android:label="Payable Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.PendingOrders"
+            android:label="Pending Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.Chef_order_dishes"
+            android:label="Orders" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerPhoneSendOTP"
+            android:label="Mobile Number" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerPhonenumber"
+            android:label="Mobile Number" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerForgotpassword"
+            android:label="Password" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerPassword"
+            android:label="Password" />
+        <activity android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel.OrderDish" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.Update_Delete_Dish"
+            android:label="Home" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel.Chef_PostDish"
+            android:label="Post Dish" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefFoodPanel_BottomNavigation"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.CustomerFoodPanel_BottomNavigation"
+            android:windowSoftInputMode="adjustNothing" />
+
+        <activity
+            android:name="cvngoc.hcmute.foodapp.MainMenu"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Chefsendotp"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Chefloginphone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.sendotp"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.LoginPhone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefVerifyPhone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.VerifyPhone"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefForgotPassword"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefLogin"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChooseOne"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ChefRegisteration"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.ForgotPassword"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Login"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.Registeration"
+            android:theme="@style/AppThemeNoActionbar" />
+        <activity
+            android:name="cvngoc.hcmute.foodapp.MainActivity"
+            android:theme="@style/AppThemeNoActionbar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="cvngoc.hcmute.foodapp.SendNotification.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cvngoc.hcmute.foodapp.SendNotification.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3125529504451842~8524211790"/>
+
+
+    </application>
+
+</manifest>

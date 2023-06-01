@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+
+
+        google()
+        jcenter()
+        maven{url "https://jitpack.io"}
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+
+
+        google()
+        jcenter()
+        maven{url "https://jitpack.io"}
+        mavenCentral()
+    }
+}
+rootProject.name = "FoodApp"
+include ':app'
