@@ -24,7 +24,6 @@ public class CustomerPhonenumber extends AppCompatActivity {
         setContentView(R.layout.activity_customer_phonenumber);
 
         num=(EditText)findViewById(R.id.phonenumber);
-        cpp=(CountryCodePicker)findViewById(R.id.Countrycode);
         SendOTP=(Button)findViewById(R.id.sendotp);
 
         SendOTP.setOnClickListener(new View.OnClickListener() {

@@ -14,13 +14,14 @@ import cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerHomeFragment;
 import cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerOrderFragment;
 import cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerProfileFragment;
 import cvngoc.hcmute.foodapp.CustomerFoodPanel.CustomerTrackFragment;
+import cvngoc.hcmute.foodapp.scan.ScanFragment;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
-//import com.google.firebase.iid.FirebaseInstanceId;
 
 public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -83,7 +84,6 @@ public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implem
             case R.id.Home:
                 fragment = new CustomerHomeFragment();
                 break;
-
 
             case R.id.Cart:
                 fragment = new CustomerCartFragment();

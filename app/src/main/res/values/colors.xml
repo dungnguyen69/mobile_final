@@ -16,6 +16,9 @@
     <color name="darkgreen">#026909</color>
     <color name="OffWhite">#36FFFFFF</color>
     <color name="DarkBlue">#250285</color>
-
+    <color name="medium_sea_green">#3CB371</color>
+    <color name="yellow">#FFFF00</color>
     <color name="yourSelectedColor">#ff0000</color>
+    <color name="black">#FF000000</color>
+    <color name="orange">#FFA500</color>
 </resources>

@@ -38,23 +38,55 @@
         android:background="@color/white"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/li0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/py"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/online"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                android:drawableLeft="@drawable/ic_payment_black_24dp"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:drawablePadding="8dp"
+                android:text="Credit, Debit &amp; ATM Cards"
+                android:textColor="@color/Blacklogo"
+                android:textSize="19dp" />
+
+            <TableRow
+                android:id="@+id/hr"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/pendingorder"
+                android:background="@color/lightgray" />
+
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/online"
+            android:id="@+id/scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="12dp"
-            android:drawableLeft="@drawable/ic_payment_black_24dp"
+            android:drawableLeft="@drawable/ic_menu_camera"
             android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:drawablePadding="8dp"
-            android:text="Credit, Debit &amp; ATM Cards"
+            android:text="Payment via scan"
             android:textColor="@color/Blacklogo"
             android:textSize="19dp" />
 
         <TableRow
-            android:id="@+id/hr"
+            android:id="@+id/hr2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/pendingorder"

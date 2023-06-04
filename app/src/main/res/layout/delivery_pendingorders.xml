@@ -78,7 +78,7 @@
 
 
             <Button
-                android:id="@+id/1"
+                android:id="@+id/reject1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -86,7 +86,7 @@
                 android:background="@drawable/btnred"
                 android:layout_marginRight="30dp"
                 android:layout_gravity="end"
-                android:text="" />
+                android:text="Reject" />
 
         </LinearLayout>
 

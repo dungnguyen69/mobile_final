@@ -7,15 +7,49 @@
         android:value="ca-app-pub-3125529504451842~8524211790"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application xmlns:tools="http://schemas.android.com/tools"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon">
-
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:icon"
+        tools:targetApi="31" >
+        <activity
+            android:name=".scan.activity_scan_gallery" />
+        <activity
+            android:name=".scan.ScanActivity">
+        </activity>
+        <activity android:name=".scan.ScanResultActivity" />
+        <activity android:name=".create.ITF" />
+        <activity android:name=".create.Codabar" />
+        <activity android:name=".create.Code39" />
+        <activity android:name=".create.Code93" />
+        <activity android:name=".create.Code128" />
+        <activity android:name=".create.UPCA" />
+        <activity android:name=".create.UPCE" />
+        <activity android:name=".create.EAN8" />
+        <activity android:name=".create.EAN13" />
+        <activity android:name=".create.AZTEC" />
+        <activity android:name=".create.PDF417" />
+        <activity android:name=".create.DATAMATRIX" />
+        <activity android:name=".create.QRCODE" />
         <activity
             android:name="cvngoc.hcmute.foodapp.DeliveryFoodPanel.Delivery_ShippingOrder"
             android:label="Ship Orders"></activity>

@@ -18,6 +18,7 @@ import cvngoc.hcmute.foodapp.SendNotification.Client;
 import cvngoc.hcmute.foodapp.SendNotification.Data;
 import cvngoc.hcmute.foodapp.SendNotification.MyResponse;
 import cvngoc.hcmute.foodapp.SendNotification.NotificationSender;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,13 +31,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import cvngoc.hcmute.foodapp.scan.ScanActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CustomerPayment extends AppCompatActivity {
 
-    TextView OnlinePayment, CashPayment;
+    TextView OnlinePayment, CashPayment, PayViaScan;
     String RandomUID, ChefID;
     private APIService apiService;
 
@@ -46,6 +48,7 @@ public class CustomerPayment extends AppCompatActivity {
         setContentView(R.layout.activity_customer_payment);
 
         OnlinePayment = (TextView) findViewById(R.id.online);
+        PayViaScan = (TextView) findViewById(R.id.scan);
         CashPayment = (TextView) findViewById(R.id.cash);
         RandomUID = getIntent().getStringExtra("RandomUID");
         apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
@@ -58,7 +61,14 @@ public class CustomerPayment extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        PayViaScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerPayment.this, ScanActivity.class);
+                intent.putExtra("randomUID", RandomUID);
+                startActivity(intent);
+            }
+        });
 
         CashPayment.setOnClickListener(new View.OnClickListener() {
             @Override

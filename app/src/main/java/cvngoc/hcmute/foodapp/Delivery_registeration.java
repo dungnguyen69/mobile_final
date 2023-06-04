@@ -30,20 +30,8 @@ import java.util.HashMap;
 
 public class Delivery_registeration extends AppCompatActivity {
 
-    String[] Maharashtra = {"Mumbai", "Pune", "Aurangabad"};
-    String[] Gujarat = {"Ahemdabad", "Rajkot", "Surat"};
-
     String[] HoChiMinh = {"District 1", "District 2", "District 3", "District 4", "District 5", "District 6", "District 7", "District 8",
             "District 9", "District 10", "District 11", "District 12","Thu Duc", "Binh Thanh", "Go Vap", "Tan Binh", "Tan Phu", "Phu Nhuan", "Binh Tan"};
-
-    String[] Mumbai = {"Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Mahalakshmi", "Lower Parel", "Prabhadevi",
-            "Dadar", "Matunga", "Mahim", "Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri", "Jogeshwari", "Ram Mandir",
-            "Goregaon", "Malad", "Kandivai", "Borivali", "Dahisar", "MiraRoad", "Bhayander", "Naigaon", "Vasai Road", "Nalla Sopara", "Virar"};
-
-
-    String[] Pune = {"Hinjewadi", "Wagholi", " Ambegaon", "Undri", "Katraj"};
-    String[] Aurangabad = {"Aarif Colony", "Baiji Pura", "Balaji Nagar", "Angoori Bagh"};
-
 
     TextInputLayout Fname, Lname, Pass, cfpass, mobileno, houseno, area, postcode, Email;
     Spinner Districtspin, Cityspin;
@@ -53,7 +41,7 @@ public class Delivery_registeration extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     FirebaseAuth FAuth;
     String role = "DeliveryPerson";
-    String city, cityy, district, fname, lname, mobile, confirmpassword, password, house, emailid;
+    String city, district, fname, lname, mobile, confirmpassword, password, house, emailid;
 
 
     @Override
@@ -91,7 +79,7 @@ public class Delivery_registeration extends AppCompatActivity {
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_registeration.this, android.R.layout.simple_spinner_item, list);
-                    Cityspin.setAdapter(arrayAdapter);
+                    Districtspin.setAdapter(arrayAdapter);
                 }
             }
 
@@ -147,7 +135,6 @@ public class Delivery_registeration extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         HashMap<String, String> hashMappp = new HashMap<>();
-                                        hashMappp.put("City", cityy);
                                         hashMappp.put("ConfirmPassword", confirmpassword);
                                         hashMappp.put("EmailID", emailid);
                                         hashMappp.put("Fname", fname);
@@ -175,12 +162,10 @@ public class Delivery_registeration extends AppCompatActivity {
                                                                 public void onClick(DialogInterface dialog, int which) {
 
                                                                     dialog.dismiss();
-
-                                                                    String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
-                                                                    Intent b = new Intent(Delivery_registeration.this, Delivery_VerifyPhone.class);
-                                                                    b.putExtra("phonenumber", phonenumber);
-                                                                    startActivity(b);
-
+                                                                    Intent intent = new Intent(Delivery_registeration.this, Delivery_Login.class);
+                                                                    startActivity(intent);
+                                                                    finish();
+                                                                    dialog.dismiss();
                                                                 }
                                                             });
                                                             AlertDialog alert = builder.create();
