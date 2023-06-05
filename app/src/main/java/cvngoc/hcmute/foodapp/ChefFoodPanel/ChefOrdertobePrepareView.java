@@ -22,6 +22,7 @@ import cvngoc.hcmute.foodapp.SendNotification.Client;
 import cvngoc.hcmute.foodapp.SendNotification.Data;
 import cvngoc.hcmute.foodapp.SendNotification.MyResponse;
 import cvngoc.hcmute.foodapp.SendNotification.NotificationSender;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -222,7 +223,7 @@ public class ChefOrdertobePrepareView extends AppCompatActivity {
                 note.setText(chefWaitingOrders1.getNote());
                 address.setText(chefWaitingOrders1.getAddress());
                 name.setText(chefWaitingOrders1.getName());
-                number.setText("+91" + chefWaitingOrders1.getMobileNumber());
+                number.setText(chefWaitingOrders1.getMobileNumber());
 
             }
 

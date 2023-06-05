@@ -35,7 +35,6 @@ public class DeliveryPendingOrderFragment extends Fragment {
     private DeliveryPendingOrderFragmentAdapter adapter;
     private DatabaseReference databaseReference;
     private SwipeRefreshLayout swipeRefreshLayout;
-    String deliveryId = "oCpc4SwLVFbKO0fPdtp4R6bmDmI3";
 
     @Nullable
     @Override
@@ -69,7 +68,7 @@ public class DeliveryPendingOrderFragment extends Fragment {
 
     private void DeliveryPendingOrders() {
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(deliveryId);
+        databaseReference = FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -24,6 +26,7 @@ import cvngoc.hcmute.foodapp.SendNotification.Client;
 import cvngoc.hcmute.foodapp.SendNotification.Data;
 import cvngoc.hcmute.foodapp.SendNotification.MyResponse;
 import cvngoc.hcmute.foodapp.SendNotification.NotificationSender;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -49,14 +52,16 @@ public class ChefPreparedOrderView extends AppCompatActivity {
     private List<ChefFinalOrders> chefFinalOrdersList;
     private ChefPreparedOrderViewAdapter adapter;
     DatabaseReference reference;
-    String RandomUID, userid;
+    String RandomUID, userid, shipperId;
     TextView grandtotal, address, name, number;
     LinearLayout l1;
     Button Prepared;
     private ProgressDialog progressDialog;
     private APIService apiService;
     Spinner Shipper;
-    String deliveryId = "oCpc4SwLVFbKO0fPdtp4R6bmDmI3";
+    List<String> shipperName = new ArrayList<String>();
+    DatabaseReference deliveryDataRef = FirebaseDatabase.getInstance().getReference("DeliveryPerson");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,7 @@ public class ChefPreparedOrderView extends AppCompatActivity {
         recyclerViewdish.setLayoutManager(new LinearLayoutManager(ChefPreparedOrderView.this));
         chefFinalOrdersList = new ArrayList<>();
         CheforderdishesView();
+
     }
 
     private void CheforderdishesView() {
@@ -129,7 +135,8 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                                                 hashMap.put("RandomUID", RandomUID);
                                                 hashMap.put("TotalPrice", chefFinalOrders.getTotalPrice());
                                                 hashMap.put("UserId", chefFinalOrders.getUserId());
-                                                FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(deliveryId).child(RandomUID).child("Dishes").child(dishid).setValue(hashMap);
+                                                hashMap.put("ShipperId", shipperId);
+                                                FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(shipperId).child(RandomUID).child("Dishes").child(dishid).setValue(hashMap);
                                             }
                                             DatabaseReference data = FirebaseDatabase.getInstance().getReference("ChefFinalOrders").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID).child("OtherInformation");
                                             data.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -147,7 +154,8 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                                                     hashMap1.put("RandomUID", RandomUID);
                                                     hashMap1.put("Status", "Order is Prepared");
                                                     hashMap1.put("UserId", userid);
-                                                    FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(deliveryId).child(RandomUID).child("OtherInformation").setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    hashMap1.put("ShipperId", shipperId);
+                                                    FirebaseDatabase.getInstance().getReference("DeliveryShipOrders").child(shipperId).child(RandomUID).child("OtherInformation").setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             FirebaseDatabase.getInstance().getReference("CustomerFinalOrders").child(userid).child(RandomUID).child("OtherInformation").child("Status").setValue("Order is Prepared...").addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -169,7 +177,7 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                                                             }).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
-                                                                    FirebaseDatabase.getInstance().getReference().child("Tokens").child(deliveryId).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                    FirebaseDatabase.getInstance().getReference().child("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("token").addListenerForSingleValueEvent(new ValueEventListener() {
                                                                         @Override
                                                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                                             String usertoken = dataSnapshot.getValue(String.class);
@@ -252,8 +260,7 @@ public class ChefPreparedOrderView extends AppCompatActivity {
                 grandtotal.setText(" " + chefFinalOrders1.getGrandTotalPrice());
                 address.setText(chefFinalOrders1.getAddress());
                 name.setText(chefFinalOrders1.getName());
-                number.setText("+91" + chefFinalOrders1.getMobileNumber());
-
+                number.setText(chefFinalOrders1.getMobileNumber());
             }
 
             @Override
@@ -261,6 +268,39 @@ public class ChefPreparedOrderView extends AppCompatActivity {
 
             }
         });
+        Shipper.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                String selectedValue = shipperName.get(position);
+                compare(selectedValue);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        deliveryDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                shipperName.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String fname = ds.child("Fname").getValue(String.class);
+                    String lname = ds.child("Lname").getValue(String.class);
+                    String result = fname.concat(" " + lname);
+                    shipperName.add(result);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChefPreparedOrderView.this, android.R.layout.simple_spinner_item, shipperName);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                Shipper.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void sendNotifications(String usertoken, String title, String message, String prepared) {
@@ -281,6 +321,25 @@ public class ChefPreparedOrderView extends AppCompatActivity {
             @Override
             public void onFailure(Call<MyResponse> call, Throwable t) {
 
+            }
+        });
+    }
+
+    public void compare(String selectedValue) {
+        String[] values = selectedValue.split(" ");
+        deliveryDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("Fname").getValue(String.class).equals(values[0]) && ds.child("Lname").getValue(String.class).equals(values[1])) {
+                        shipperId = ds.getKey();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }

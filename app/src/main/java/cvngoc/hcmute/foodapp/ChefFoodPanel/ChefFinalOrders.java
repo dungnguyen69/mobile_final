@@ -2,9 +2,9 @@ package cvngoc.hcmute.foodapp.ChefFoodPanel;
 
 public class ChefFinalOrders {
 
-    private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId;
+    private String ChefId, DishId, DishName, DishPrice, DishQuantity, RandomUID, TotalPrice, UserId, ShipperId;
 
-    public ChefFinalOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
+    public ChefFinalOrders(String shipperId, String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
         ChefId = chefId;
         DishId = dishId;
         DishName = dishName;
@@ -13,11 +13,19 @@ public class ChefFinalOrders {
         RandomUID = randomUID;
         TotalPrice = totalPrice;
         UserId = userId;
+        ShipperId = shipperId;
     }
 
-    public ChefFinalOrders()
-    {
+    public ChefFinalOrders() {
 
+    }
+
+    public String getShipperId() {
+        return ShipperId;
+    }
+
+    public void setShipperId(String shipperId) {
+        ShipperId = shipperId;
     }
 
     public String getChefId() {

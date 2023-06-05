@@ -2,9 +2,9 @@ package cvngoc.hcmute.foodapp.DeliveryFoodPanel;
 
 public class DeliveryShipOrders {
 
-    private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId;
+    private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId,ShipperId;
 
-    public DeliveryShipOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
+    public DeliveryShipOrders(String shipperId, String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
         ChefId = chefId;
         DishId = dishId;
         DishName = dishName;
@@ -13,6 +13,7 @@ public class DeliveryShipOrders {
         RandomUID = randomUID;
         TotalPrice = totalPrice;
         UserId = userId;
+        ShipperId = shipperId;
     }
 
     public DeliveryShipOrders()
@@ -26,6 +27,13 @@ public class DeliveryShipOrders {
 
     public void setChefId(String chefId) {
         ChefId = chefId;
+    }
+    public String getShipperId() {
+        return ShipperId;
+    }
+
+    public void setShipperId(String shipperId) {
+        ShipperId = shipperId;
     }
 
     public String getDishId() {

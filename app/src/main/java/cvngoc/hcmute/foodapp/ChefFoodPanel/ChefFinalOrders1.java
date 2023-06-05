@@ -2,20 +2,27 @@ package cvngoc.hcmute.foodapp.ChefFoodPanel;
 
 public class ChefFinalOrders1 {
 
-    private String Address,GrandTotalPrice,MobileNumber,Name,RandomUID,Status;
+    private String Address, GrandTotalPrice, MobileNumber, Name, RandomUID, Status, ShipperId;
 
-    public ChefFinalOrders1(String address, String grandTotalPrice, String mobileNumber, String name, String randomUID, String status) {
+    public ChefFinalOrders1(String shipperId, String address, String grandTotalPrice, String mobileNumber, String name, String randomUID, String status) {
         Address = address;
         GrandTotalPrice = grandTotalPrice;
         MobileNumber = mobileNumber;
         Name = name;
         RandomUID = randomUID;
         Status = status;
+        ShipperId =shipperId;
     }
 
-    public ChefFinalOrders1()
-    {
+    public ChefFinalOrders1() {
 
+    }
+    public String getShipperId() {
+        return Address;
+    }
+
+    public void setShipperId(String shipperId) {
+        ShipperId = shipperId;
     }
 
     public String getAddress() {
